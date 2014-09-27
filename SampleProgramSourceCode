@@ -1,0 +1,35 @@
+#include "windows.h"
+#include <GL/glut.h>
+void MyDisplay(){ 
+	glClear(GL_COLOR_BUFFER_BIT);
+	glBegin(GL_POINTS);
+	glVertex2i(50,50);
+	glVertex2i(50,150);
+	glEnd();
+	glBegin(GL_LINES);
+	glVertex2i(80,50);
+	glVertex2i(80,150);
+	glVertex2i(120,150);
+	glVertex2i(150,150);
+	glEnd();
+	glFlush();
+}
+void MyInit(){
+	glClearColor(1.0, 0.5, 1.0, 1.0);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	glPointSize(4.0);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluOrtho2D(0.0, 200.0, 0.0, 200.0);
+}
+int main(int argc, char* argv[]){
+  glutInit(&argc, argv);
+  glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
+	glutInitWindowSize(640, 480);
+	glutInitWindowPosition(100, 150);
+	glutCreateWindow("First Try");
+	glutDisplayFunc(MyDisplay);
+	MyInit();
+	glutMainLoop();
+	return 0;
+}
